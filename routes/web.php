@@ -13,3 +13,4 @@
 
 Route::get('/', 'pagesController@home');
 Route::get('/teams', 'teamsController@index');
+Route::get('/teams/{team}', 'teamsController@show');
