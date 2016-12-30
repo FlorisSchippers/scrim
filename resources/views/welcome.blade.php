@@ -12,10 +12,11 @@
                 @endif
             </div>
         @endif
+
         <div class="content">
-            <div class="title m-b-md">
-                Welcome to Scrim.io
-            </div>
+            <h1> Welcome to Scrim.io </h1>
+            <h3><a href="/teams">To all teams</a></h3>
+            <h3><a href="/scrims">To all scrims</a></h3>
         </div>
     </div>
 @stop

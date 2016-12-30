@@ -12,4 +12,9 @@ class Team extends Model
 	{
 		return $this->hasMany(User::class);
 	}
+
+	public function scrims()
+	{
+		return $this->hasMany(Scrim::class);
+	}
 }
