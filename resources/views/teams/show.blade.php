@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="row">
+    <div class="container">
         <div class="col-md-6 col-md-offset-3">
             <h1>{{ $team->name }}</h1>
 

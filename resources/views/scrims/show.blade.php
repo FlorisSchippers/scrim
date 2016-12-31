@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="row">
+    <div class="container">
         <div class="col-md-8 col-md-offset-2">
             <h1>{{ $scrim->team->name }} wants to scrim</h1>
 

@@ -1,22 +1,13 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @if (Auth::check())
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                @endif
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <h1> Welcome to Scrim.io </h1>
+                <h3><a href="/teams">To all teams</a></h3>
+                <h3><a href="/scrims">To all scrims</a></h3>
             </div>
-        @endif
-
-        <div class="content">
-            <h1> Welcome to Scrim.io </h1>
-            <h3><a href="/teams">To all teams</a></h3>
-            <h3><a href="/scrims">To all scrims</a></h3>
         </div>
     </div>
 @stop
