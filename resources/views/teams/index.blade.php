@@ -4,9 +4,9 @@
     <div class="container">
         <div class="col-md-8 col-md-offset-2">
             <h1>All teams</h1>
-            <ul>
+            <ul class="list-group">
                 @foreach($teams as $team)
-                    <li>
+                    <li class="list-group-item">
                         <a href="/teams/{{ $team->id }}">{{ $team->name }}</a>
                     </li>
                 @endforeach

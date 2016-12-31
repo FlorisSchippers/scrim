@@ -26,16 +26,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <!-- Collapsed Hamburger -->
-            {{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"--}}
-            {{--data-target="#app-navbar-collapse">--}}
-            {{--<span class="sr-only">Toggle Navigation</span>--}}
-            {{--<span class="icon-bar"></span>--}}
-            {{--<span class="icon-bar"></span>--}}
-            {{--<span class="icon-bar"></span>--}}
-            {{--</button>--}}
-
-            <!-- Branding Image -->
+                <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">{{ 'Scrim.io' }}</a>
             </div>
 
@@ -55,11 +46,12 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }}<span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
+                                    <a href="{{ url('/profile') }}">Profile</a>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
