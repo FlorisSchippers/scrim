@@ -5,6 +5,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="row">
                 <h1> Welcome to Scrim.io </h1>
+                <h3><a href="/users">To all users</a></h3>
                 <h3><a href="/teams">To all teams</a></h3>
                 <h3><a href="/scrims">To all scrims</a></h3>
             </div>

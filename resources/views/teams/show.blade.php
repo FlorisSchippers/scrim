@@ -7,8 +7,10 @@
 
             <h2>Players</h2>
             <ul class="list-group">
-                @foreach($team->players as $player)
-                    <li class="list-group-item">{{ $player->name }}</li>
+                @foreach($team->users as $user)
+                    <li class="list-group-item">
+                        <a href="/users/{{ $user->id }}">{{ $user->nickname }}</a>
+                    </li>
                 @endforeach
             </ul>
 

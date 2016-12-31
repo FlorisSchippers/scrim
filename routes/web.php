@@ -2,7 +2,9 @@
 
 Auth::routes();
 Route::get('/', 'PagesController@home');
-Route::get('/profile', 'UsersController@index');
+Route::get('/users', 'UsersController@index');
+Route::get('/users/me', 'UsersController@me');
+Route::get('/users/{user}', 'UsersController@show');
 Route::get('/teams', 'TeamsController@index');
 Route::get('/teams/{team}', 'TeamsController@show');
 Route::get('/scrims', 'ScrimsController@index');
