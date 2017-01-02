@@ -17,7 +17,7 @@ class MustBeAdmin
 	{
 		$user = $request->user();
 
-		if ($user && $user->email == 'FlorisSchippers@gmail.com') {
+		if ($user && $user->email == 'Florisch@scrim.io') {
 			return $next($request);
 		}
 		abort(404, 'No way, José. You shall not pass.');
