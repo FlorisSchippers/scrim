@@ -16,8 +16,9 @@ class CreateScrimsTable extends Migration
         Schema::create('scrims', function (Blueprint $table) {
 	        $table->increments('id');
 	        $table->integer('team_id');
-	        $table->dateTime('startTime');
-	        $table->dateTime('endTime');
+	        $table->date('date');
+	        $table->time('startTime');
+	        $table->time('endTime');
 	        $table->integer('opponentId')->nullable();
 	        $table->timestamps();
         });

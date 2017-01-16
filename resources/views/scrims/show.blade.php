@@ -6,6 +6,7 @@
             <h1>{{ $scrim->team->name }} wants to scrim</h1>
 
             <ul class="list-group">
+                <li class="list-group-item">On {{ $scrim->date }}</li>
                 <li class="list-group-item">From {{ $scrim->startTime }}</li>
                 <li class="list-group-item">To {{ $scrim->endTime }}</li>
             </ul>

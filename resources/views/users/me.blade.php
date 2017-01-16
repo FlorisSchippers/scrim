@@ -8,9 +8,7 @@
                     <li class="list-group-item">First and last name</li>
                     <li class="list-group-item">Nickname</li>
                     <li class="list-group-item">Email</li>
-                    @if( $user->team_id )
-                        <li class="list-group-item">Team</li>
-                    @endif
+                    <li class="list-group-item">Team</li>
                 </ul>
             </div>
 
@@ -20,7 +18,10 @@
                     <li class="list-group-item">{{ $user->nickname }}</li>
                     <li class="list-group-item">{{ $user->email }}</li>
                     @if( $user->team_id )
-                        <li class="list-group-item">{{ $user->team->name }}</li>
+                        <li class="list-group-item"><a href="/teams/{{ $user->team_id }}">{{ $user->team->name }}</a>
+                        </li>
+                    @else
+                        <li class="list-group-item"><a href="/teams/add">Create a new team</a></li>
                     @endif
                 </ul>
             </div>
