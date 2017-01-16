@@ -1,5 +1,9 @@
 <?php
 
+DB::listen(function($query) {
+	var_dump($query->sql, $query->bindings);
+});
+
 Auth::routes();
 Route::get('/', 'PagesController@home');
 Route::get('/users', 'UsersController@index');
