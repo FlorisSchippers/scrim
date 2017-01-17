@@ -7,6 +7,7 @@
 Auth::routes();
 
 Route::get('/', 'PagesController@home');
+
 Route::get('/users', 'UsersController@index');
 Route::get('/users/me', 'UsersController@me');
 Route::get('/users/leave', 'UsersController@leaveTeam');
@@ -19,8 +20,9 @@ Route::get('/teams/{team}', 'TeamsController@show');
 
 Route::get('/scrims', 'ScrimsController@index');
 Route::get('/scrims/add', 'ScrimsController@addScrim');
+Route::get('/scrims/{scrim}/remove', 'ScrimsController@removeScrim');
 Route::get('/scrims/{scrim}', 'ScrimsController@show');
 
-Route::post('teams', 'TeamsController@saveTeam');
+Route::post('/teams', 'TeamsController@saveTeam');
 Route::post('/scrims', 'ScrimsController@saveScrim');
-Route::post('/scrims/{scrim}/comment', 'ScrimsController@spostComment');
+Route::post('/scrims/{scrim}/comment', 'ScrimsController@postComment');

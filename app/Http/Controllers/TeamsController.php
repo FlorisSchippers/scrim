@@ -24,7 +24,7 @@ class TeamsController extends Controller
 			$user = new User;
 			$user->team_id = 0;
 		}
-		return view('teams.show', compact('user'), compact('team'));
+		return view('teams.show', compact('user', 'team'));
 	}
 
 	public function addTeam()

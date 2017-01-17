@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Scrim;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,10 @@ class scrimsController extends Controller
 	{
 		$scrim = Scrim::find($id);
 		$user = Auth::user();
+		foreach ($scrim->comments as $comment) {
+			$commentingUser = User::find($comment->user_id);
+			$comment->name = $commentingUser->name;
+		}
 		if ($user === null) {
 			$user = new User;
 			$user->id = 0;
@@ -45,8 +50,21 @@ class scrimsController extends Controller
 		return redirect('/teams/' . $request->team_id);
 	}
 
-	public function postComment()
+	public function postComment(Request $request)
 	{
+		$comment = new Comment;
+		$comment->scrim_id = $request->scrim_id;
+		$comment->user_id = $request->user_id;
+		$comment->body = $request->body;
+		$comment->save();
+		return redirect('/scrims/' . $request->scrim_id);
+	}
 
+	public function removeScrim($id)
+	{
+		$scrim = Scrim::find($id);
+		$team_id = $scrim->team_id;
+		$scrim->delete();
+		return redirect('/teams/' . $team_id);
 	}
 }
