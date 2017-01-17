@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Scrim;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,13 @@ class scrimsController extends Controller
 	public function show($id)
 	{
 		$scrim = Scrim::find($id);
-		return view('scrims.show', compact('scrim'), compact('team'));
+		$user = Auth::user();
+		if ($user === null) {
+			$user = new User;
+			$user->id = 0;
+			$user->team_id = 0;
+		}
+		return view('scrims.show', compact('scrim', 'team', 'user'));
 	}
 
 	public function addScrim()
@@ -38,4 +45,8 @@ class scrimsController extends Controller
 		return redirect('/teams/' . $request->team_id);
 	}
 
+	public function postComment()
+	{
+
+	}
 }

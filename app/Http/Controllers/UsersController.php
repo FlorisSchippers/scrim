@@ -25,4 +25,12 @@ class UsersController extends Controller
 		$user = User::find($id);
 		return view('users.show', compact('user'));
 	}
+
+	public function leaveTeam()
+	{
+		$user = Auth::user();
+		$user->team_id = null;
+		$user->save();
+		return view('users.me', compact('user'));
+	}
 }

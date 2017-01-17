@@ -19,6 +19,8 @@
                     <li class="list-group-item">{{ $user->email }}</li>
                     @if( $user->team_id )
                         <li class="list-group-item"><a href="/teams/{{ $user->team_id }}">{{ $user->team->name }}</a>
+                            <a href="/users/leave" class="pull-right">
+                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
                         </li>
                     @else
                         <li class="list-group-item"><a href="/teams/add">Create a new team</a></li>

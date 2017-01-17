@@ -8,8 +8,7 @@
                 @foreach($scrims as $scrim)
                     <li class="list-group-item">
                         <a href="/scrims/{{ $scrim->id }}">{{ $scrim->team->name }} wants to scrim
-                            from {{ $scrim->startTime }}
-                            to {{ $scrim->endTime }}</a>
+                            from {{ $scrim->startTime }} until {{ $scrim->endTime }}</a>
                     </li>
                 @endforeach
             </ul>
