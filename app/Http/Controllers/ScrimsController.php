@@ -22,7 +22,7 @@ class scrimsController extends Controller
 		$user = Auth::user();
 		foreach ($scrim->comments as $comment) {
 			$commentingUser = User::find($comment->user_id);
-			$comment->name = $commentingUser->name;
+			$comment->nickname = $commentingUser->nickname;
 		}
 		if ($user === null) {
 			$user = new User;

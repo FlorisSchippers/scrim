@@ -39,7 +39,7 @@
                     </li>
                 @endforeach
             </ul>
-
+            <hr>
             <h3><a href="/teams">Back to all teams</a></h3>
             <h5><a href="/">Back to hub</a></h5>
         </div>

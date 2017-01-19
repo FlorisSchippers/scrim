@@ -13,18 +13,20 @@
                     @endif
                 </ul>
             </div>
-
             <div class="col-md-8">
                 <ul class="list-group">
                     <li class="list-group-item">{{ $user->name }}</li>
                     <li class="list-group-item">{{ $user->nickname }}</li>
                     <li class="list-group-item">{{ $user->email }}</li>
                     @if( $user->team_id )
-                        <li class="list-group-item"><a href="/teams/{{ $user->team_id }}">{{ $user->team->name }}</a></li>
+                        <li class="list-group-item"><a href="/teams/{{ $user->team_id }}">{{ $user->team->name }}</a>
+                        </li>
                     @endif
                 </ul>
             </div>
-            <a href="/">Back to hub</a>
+            <hr class="col-md-12">
+            <h3><a href="/users">Back to all users</a></h3>
+            <h5><a href="/">Back to hub</a></h5>
         </div>
     </div>
 @stop

@@ -11,7 +11,6 @@
                     <li class="list-group-item">Team</li>
                 </ul>
             </div>
-
             <div class="col-md-8">
                 <ul class="list-group">
                     <li class="list-group-item">{{ $user->name }}</li>

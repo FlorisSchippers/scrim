@@ -12,7 +12,6 @@
                     </li>
                 @endforeach
             </ul>
-
             <a href="/">Back to hub</a>
         </div>
     </div>
