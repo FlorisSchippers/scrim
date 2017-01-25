@@ -36,6 +36,8 @@ class TeamsController extends Controller
 	{
 		$team = new Team;
 		$team->name = $request->name;
+		$team->abbreviation = $request->abbreviation;
+		$team->image = $request->image;
 		$team->save();
 		$user = Auth::user();
 		$user->team_id = $team->id;

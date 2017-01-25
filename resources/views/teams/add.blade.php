@@ -8,6 +8,10 @@
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" name="name" class="form-control"><br>
+                    <label for="abbreviation">Abbreviation</label>
+                    <input type="text" name="abbreviation" class="form-control"><br>
+                    <label for="image">Link to image</label>
+                    <input type="text" name="image" class="form-control"><br>
                     <button type="submit" name="submit" class="btn btn-primary">Create new team</button>
                 </div>
             </form>

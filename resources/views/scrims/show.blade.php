@@ -10,11 +10,13 @@
                 <li class="list-group-item">From {{ $scrim->startTime }}</li>
                 <li class="list-group-item">To {{ $scrim->endTime }}</li>
             </ul>
+            <br>
             <hr>
+            <br>
             <ul class="list-group">
                 @foreach($scrim->comments as $comment)
                     <li class="list-group-item"><span
-                                style="font-weight: bold">{{ $comment->nickname }}</span>: {{ $comment->body }}</li>
+                                style="font-weight: bold"><a href="/users/{{ $comment->user->id }}">{{ $comment->user->team->abbreviation }}.{{ $comment->user->nickname }}</a></span>: {{ $comment->body }}</li>
                 @endforeach
             </ul>
             @if($user->team_id != 0)
@@ -29,7 +31,9 @@
                     </div>
                 </form>
             @endif
+            <br>
             <hr>
+            <br>
             <h3><a href="/scrims">Back to all scrims</a></h3>
             <h5><a href="/">Back to hub</a></h5>
         </div>
