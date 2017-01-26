@@ -7,7 +7,8 @@
             <ul class="list-group">
                 @foreach($users as $user)
                     <li class="list-group-item">
-                        <a href="/users/{{ $user->id }}">{{ $user->nickname }}</a>
+                        <a href="/users/{{ $user->id }}">@if($user->team)
+                                {{ $user->team->abbreviation }}.@endif{{ $user->nickname }}</a>
                     </li>
                 @endforeach
             </ul>

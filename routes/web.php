@@ -1,9 +1,5 @@
 <?php
 
-//DB::listen(function($query) {
-//	var_dump($query->sql, $query->bindings);
-//});
-
 Auth::routes();
 
 Route::get('/', 'PagesController@home');
@@ -22,6 +18,7 @@ Route::get('/scrims', 'ScrimsController@index');
 Route::get('/scrims/add', 'ScrimsController@addScrim');
 Route::get('/scrims/{scrim}/remove', 'ScrimsController@removeScrim');
 Route::get('/scrims/{scrim}', 'ScrimsController@show');
+Route::get('/scrims/{scrim}/choose/{comment}', 'ScrimsController@choose');
 
 Route::post('/teams', 'TeamsController@saveTeam');
 Route::post('/scrims', 'ScrimsController@saveScrim');

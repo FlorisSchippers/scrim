@@ -19,7 +19,7 @@ class CreateScrimsTable extends Migration
 	        $table->date('date');
 	        $table->time('startTime');
 	        $table->time('endTime');
-	        $table->integer('opponentId')->nullable();
+	        $table->integer('opponent_id')->nullable();
 	        $table->timestamps();
         });
     }

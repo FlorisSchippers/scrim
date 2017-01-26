@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Team;
 use App\Scrim;
 use App\Comment;
 use Illuminate\Http\Request;
@@ -28,7 +29,14 @@ class scrimsController extends Controller
 			$user->id = 0;
 			$user->team_id = 0;
 		}
-		return view('scrims.show', compact('scrim', 'team', 'user'));
+		if ($scrim->opponent_id) {
+			$opponent = Team::find($scrim->opponent_id);
+		} else {
+			$opponent = new Team;
+			$opponent->id = 0;
+			$opponent->name = '';
+		}
+		return view('scrims.show', compact('scrim', 'user', 'opponent'));
 	}
 
 	public function addScrim()
@@ -46,7 +54,7 @@ class scrimsController extends Controller
 		$scrim->endTime = $request->endTime;
 		$scrim->save();
 
-		return redirect('/teams/' . $request->team_id);
+		return redirect('/scrims/' . $scrim->id);
 	}
 
 	public function postComment(Request $request)
@@ -57,6 +65,22 @@ class scrimsController extends Controller
 		$comment->body = $request->body;
 		$comment->save();
 		return redirect('/scrims/' . $request->scrim_id);
+	}
+
+	public function choose($scrim_id, $comment_id)
+	{
+		$comments = Comment::all();
+		foreach ($comments as $comment) {
+			$comment->chosen = false;
+			$comment->save();
+		}
+		$comment = Comment::find($comment_id);
+		$comment->chosen = true;
+		$comment->save();
+		$scrim = Scrim::find($scrim_id);
+		$scrim->opponent_id = User::find($comment->user_id)->team_id;
+		$scrim->save();
+		return redirect('/scrims/' . $scrim_id);
 	}
 
 	public function removeScrim($id)

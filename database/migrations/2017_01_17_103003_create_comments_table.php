@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->integer('scrim_id');
             $table->integer('user_id');
             $table->string('body');
+            $table->boolean('chosen')->default(false);
             $table->timestamps();
         });
     }

@@ -40,6 +40,21 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
+                                <label for="rating" class="col-md-4 control-label">Rating</label>
+
+                                <div class="col-md-6">
+                                    <input id="rating" type="text" class="form-control" name="rating"
+                                           value="{{ old('rating') }}" required autofocus>
+
+                                    @if ($errors->has('rating'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('rating') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-4 control-label">E-Mail address</label>
 
