@@ -6,13 +6,13 @@ use App\User;
 use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class TeamsController extends Controller
 {
 	public function index()
 	{
 		$teams = Team::all();
+
 		return view('teams.index', compact('teams'));
 	}
 
@@ -48,7 +48,7 @@ class TeamsController extends Controller
 		$this->validate($request, [
 				'name' => 'required|max:255',
 				'abbreviation' => 'required|max:6',
-				'image' => 'required'
+				'image' => 'required|url'
 		]);
 
 		$team = new Team;

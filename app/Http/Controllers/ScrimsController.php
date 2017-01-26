@@ -14,6 +14,7 @@ class scrimsController extends Controller
 	public function index()
 	{
 		$scrims = Scrim::all();
+
 		return view('scrims.index', compact('scrims'));
 	}
 
@@ -24,11 +25,13 @@ class scrimsController extends Controller
 		foreach ($scrim->comments as $comment) {
 			$comment->user = User::find($comment->user_id);
 		}
+
 		if ($user === null) {
 			$user = new User;
 			$user->id = 0;
 			$user->team_id = 0;
 		}
+
 		if ($scrim->opponent_id) {
 			$opponent = Team::find($scrim->opponent_id);
 		} else {
@@ -36,17 +39,25 @@ class scrimsController extends Controller
 			$opponent->id = 0;
 			$opponent->name = '';
 		}
+
 		return view('scrims.show', compact('scrim', 'user', 'opponent'));
 	}
 
 	public function addScrim()
 	{
 		$user = Auth::user();
+
 		return view('scrims.add', compact('user'));
 	}
 
 	public function saveScrim(Request $request)
 	{
+		$this->validate($request, [
+				'date' => 'required|date|after:today',
+				'startTime' => 'required|after:now',
+				'endTime' => 'required|after:startTime'
+		]);
+
 		$scrim = new Scrim;
 		$scrim->team_id = $request->team_id;
 		$scrim->date = $request->date;
@@ -54,16 +65,21 @@ class scrimsController extends Controller
 		$scrim->endTime = $request->endTime;
 		$scrim->save();
 
-		return redirect('/scrims/' . $scrim->id);
+		return redirect('/teams/' . $scrim->team_id);
 	}
 
 	public function postComment(Request $request)
 	{
+		$this->validate($request, [
+				'body' => 'required|max:255'
+		]);
+
 		$comment = new Comment;
 		$comment->scrim_id = $request->scrim_id;
 		$comment->user_id = $request->user_id;
 		$comment->body = $request->body;
 		$comment->save();
+
 		return redirect('/scrims/' . $request->scrim_id);
 	}
 
@@ -73,6 +89,7 @@ class scrimsController extends Controller
 		$newChosenComment = Comment::find($comment_id);
 		$oldChosenComment = new Comment;
 		$comments = Comment::all();
+
 		foreach ($comments as $comment) {
 			if ($comment->chosen == true) {
 				$oldChosenComment = $comment;
@@ -80,6 +97,7 @@ class scrimsController extends Controller
 			$comment->chosen = false;
 			$comment->save();
 		}
+
 		if ($newChosenComment->id == $oldChosenComment->id) {
 			$newChosenComment->chosen = false;
 			$scrim->opponent_id = NULL;
@@ -87,6 +105,7 @@ class scrimsController extends Controller
 			$newChosenComment->chosen = true;
 			$scrim->opponent_id = User::find($newChosenComment->user_id)->team_id;
 		}
+
 		$newChosenComment->save();
 		$scrim->save();
 

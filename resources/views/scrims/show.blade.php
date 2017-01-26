@@ -46,11 +46,15 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="scrim_id" value="{{ $scrim->id }}">
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                         <label for="body">Comment</label>
-                        <input type="text" name="body" class="form-control"><br>
-                        <button type="submit" name="submit" class="btn btn-primary">Add comment</button>
+                        <input type="text" name="body" class="form-control" value="{{ old('body') }}" required
+                               autofocus>
+                        @if ($errors->has('body'))
+                            <span class="help-block"><strong>{{ $errors->first('body') }}</strong></span>
+                        @endif
                     </div>
+                    <button type="submit" name="submit" class="btn btn-primary">Add comment</button>
                 </form>
             @endif
             <br>
