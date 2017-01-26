@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2" id="hier">
             <h1>All scrims</h1>
             <div class="col-md-3" style="padding: 0">
                 <ul class="list-group">

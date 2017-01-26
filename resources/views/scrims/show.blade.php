@@ -20,16 +20,23 @@
             <br>
             <ul class="list-group">
                 @foreach($scrim->comments as $comment)
-                    <li class="list-group-item"
+                    <li class="list-group-item
                         @if($comment->chosen == true)
-                                style="background-color: lightgreen"
+                                list-group-item-success
                         @endif
-                            ><span style="font-weight: bold">
-                            <a href="/users/{{ $comment->user->id }}">{{ $comment->user->team->abbreviation }}.{{ $comment->user->nickname }}</a></span>: {{ $comment->body }}
+                            "><span style="font-weight: bold">
+                            <a href="/users/{{ $comment->user->id }}">{{ $comment->user->team->abbreviation }}.{{ $comment->user->nickname }}</a></span>:
+                            <span style="color: black">{{ $comment->body }}</span>
                         @if ($user->team_id == $comment->scrim->team_id)
-                            <a href="/scrims/{{ $scrim->id }}/choose/{{ $comment->id }}" class="pull-right">
-                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            </a>
+                            @if($comment->chosen == true)
+                                <a href="/scrims/{{ $scrim->id }}/choose/{{ $comment->id }}" class="pull-right">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </a>
+                            @else
+                                <a href="/scrims/{{ $scrim->id }}/choose/{{ $comment->id }}" class="pull-right">
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                </a>
+                            @endif
                         @endif
                     </li>
                 @endforeach

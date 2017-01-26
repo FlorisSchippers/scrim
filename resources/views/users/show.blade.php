@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="col-md-8 col-md-offset-2">
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding: 0">
                 <ul class="list-group">
                     <li class="list-group-item">First and last name</li>
                     <li class="list-group-item">Nickname</li>
@@ -12,7 +12,7 @@
                     @endif
                 </ul>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" style="padding: 0">
                 <ul class="list-group">
                     <li class="list-group-item">{{ $user->name }}</li>
                     <li class="list-group-item">{{ $user->nickname }}</li>

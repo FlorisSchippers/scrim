@@ -5,6 +5,9 @@
         <div class="col-md-6 col-md-offset-3">
             <img src="{{ $team->image }}" style="width: 200px; margin: auto; float:right">
             <h1>{{ $team->name }}</h1>
+            @if($team->rating)
+                <h3>Avg. Rating: {{ $team->rating }}MMR</h3>
+            @endif
             <br>
             <hr>
             <br>

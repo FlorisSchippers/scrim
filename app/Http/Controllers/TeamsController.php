@@ -6,7 +6,7 @@ use App\User;
 use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Validator;
 
 class TeamsController extends Controller
 {
@@ -19,11 +19,22 @@ class TeamsController extends Controller
 	public function show($id)
 	{
 		$team = Team::find($id);
+		if (count($team->users) >= 1) {
+			$total = 0;
+			$counter = 0;
+			foreach ($team->users as $user) {
+				$total += $user->rating;
+				$counter++;
+			}
+			$team->rating = $total / $counter;
+		}
+
 		$user = Auth::user();
 		if ($user === null) {
 			$user = new User;
 			$user->team_id = 0;
 		}
+
 		return view('teams.show', compact('user', 'team'));
 	}
 
@@ -34,6 +45,12 @@ class TeamsController extends Controller
 
 	public function saveTeam(Request $request)
 	{
+		$this->validate($request, [
+				'name' => 'required|max:255',
+				'abbreviation' => 'required|max:6',
+				'image' => 'required'
+		]);
+
 		$team = new Team;
 		$team->name = $request->name;
 		$team->abbreviation = $request->abbreviation;

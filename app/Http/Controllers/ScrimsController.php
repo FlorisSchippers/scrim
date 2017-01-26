@@ -69,17 +69,27 @@ class scrimsController extends Controller
 
 	public function choose($scrim_id, $comment_id)
 	{
+		$scrim = Scrim::find($scrim_id);
+		$newChosenComment = Comment::find($comment_id);
+		$oldChosenComment = new Comment;
 		$comments = Comment::all();
 		foreach ($comments as $comment) {
+			if ($comment->chosen == true) {
+				$oldChosenComment = $comment;
+			}
 			$comment->chosen = false;
 			$comment->save();
 		}
-		$comment = Comment::find($comment_id);
-		$comment->chosen = true;
-		$comment->save();
-		$scrim = Scrim::find($scrim_id);
-		$scrim->opponent_id = User::find($comment->user_id)->team_id;
+		if ($newChosenComment->id == $oldChosenComment->id) {
+			$newChosenComment->chosen = false;
+			$scrim->opponent_id = NULL;
+		} else {
+			$newChosenComment->chosen = true;
+			$scrim->opponent_id = User::find($newChosenComment->user_id)->team_id;
+		}
+		$newChosenComment->save();
 		$scrim->save();
+
 		return redirect('/scrims/' . $scrim_id);
 	}
 
