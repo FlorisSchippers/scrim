@@ -75,4 +75,27 @@ class TeamsController extends Controller
 			return redirect('teams/' . $id);
 		}
 	}
+
+	public function deleteTeam($id)
+	{
+		$user = Auth::user();
+		if ($user->admin == true) {
+			$users = User::all();
+			foreach ($users as $user) {
+				if ($user->team_id = $id) {
+					$user->team_id = NULL;
+					$user->save();
+				}
+			}
+
+			$team = Team::find($id);
+			$team->delete();
+			$teams = Team::all();
+
+			return view('admin.index', compact('user', 'users', 'teams'));
+		} else {
+			Session::flash('error', 'You are not authorized');
+			return redirect('');
+		}
+	}
 }

@@ -7688,4 +7688,8 @@ button.close {
   }
 }
 
+.no-padding {
+  padding: 0;
+}
+
 /*# sourceMappingURL=app.css.map */

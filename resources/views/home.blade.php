@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container">
+        @if(Session::has('error'))
+            <div class="alert alert-danger">
+                {{ Session::get('error') }}
+            </div>
+        @endif
         <div class="col-md-8 col-md-offset-2">
             <div class="row">
                 <h1> Welcome to Scrim.io </h1>

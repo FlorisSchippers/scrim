@@ -7,10 +7,12 @@
             <h1>{{ $team->name }}</h1>
             @if($team->rating)
                 <h3>Avg. Rating: {{ $team->rating }}MMR</h3>
+                <hr>
             @endif
-            <br>
+            @if($team->bio)
+                {{ $team->bio }}
+            @endif
             <hr>
-            <br>
             <h2>
                 Players
                 @if ($user->team_id != $team->id)
@@ -26,9 +28,7 @@
                     </li>
                 @endforeach
             </ul>
-            <br>
             <hr>
-            <br>
             <h2>
                 Scrims
                 @if ($user->team_id == $team->id)
@@ -46,7 +46,10 @@
             <div class="col-md-9" style="padding: 0">
                 <ul class="list-group">
                     @foreach($team->scrims as $scrim)
-                        <li class="list-group-item"><a href="/scrims/{{ $scrim->id }}">From {{ $scrim->startTime }} until {{ $scrim->endTime }}</a>
+                        <li class="list-group-item">
+                            <a href="/scrims/{{ $scrim->id }}">
+                                From {{ $scrim->startTime }} until {{ $scrim->endTime }}
+                            </a>
                             @if ($user->team_id == $team->id)
                                 <a href="/scrims/{{ $scrim->id }}/remove" class="pull-right"><span
                                             class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
@@ -56,9 +59,7 @@
                 </ul>
             </div>
             <div class="row"></div>
-            <br>
             <hr>
-            <br>
             <h3><a href="/teams">Back to all teams</a></h3>
             <h5><a href="/">Back to hub</a></h5>
         </div>

@@ -3,15 +3,19 @@
 Auth::routes();
 
 Route::get('/', 'PagesController@home');
+Route::get('/admin', 'UsersController@admin');
 
 Route::get('/users', 'UsersController@index');
 Route::get('/users/me', 'UsersController@me');
 Route::get('/users/leave', 'UsersController@leaveTeam');
 Route::get('/users/{user}', 'UsersController@show');
+Route::get('/users/{user}/toggleAdmin', 'UsersController@toggleAdmin');
+Route::get('/users/{user}/toggleActive', 'UsersController@toggleActive');
 
 Route::get('/teams', 'TeamsController@index');
 Route::get('/teams/add', 'TeamsController@addTeam');
 Route::get('/teams/{team}/join', 'TeamsController@joinTeam');
+Route::get('/teams/{team}/delete', 'TeamsController@deleteTeam');
 Route::get('/teams/{team}', 'TeamsController@show');
 
 Route::get('/scrims', 'ScrimsController@index');

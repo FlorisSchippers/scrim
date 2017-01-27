@@ -11,8 +11,9 @@
     <title>{{ 'Scrim.io' }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    @yield('header')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -47,12 +48,15 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{ Auth::user()->nickname }}<span class="caret"></span>
+                                {{ Auth::user()->nickname }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ url('/users/me') }}">Profile</a>
+                                    @if(Auth::user()->admin == true)
+                                    <a href="{{ url('/admin') }}">Admin</a>
+                                    @endif
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -77,5 +81,6 @@
 
 <!-- Scripts -->
 <script src="/js/app.js"></script>
+@yield('footer')
 </body>
 </html>
