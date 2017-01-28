@@ -90,9 +90,8 @@ class TeamsController extends Controller
 
 			$team = Team::find($id);
 			$team->delete();
-			$teams = Team::all();
 
-			return view('admin.index', compact('user', 'users', 'teams'));
+			return redirect('admin');
 		} else {
 			Session::flash('error', 'You are not authorized');
 			return redirect('');

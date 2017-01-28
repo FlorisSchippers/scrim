@@ -85,46 +85,29 @@
         $(document).ready(function () {
             $('#admin-table').DataTable();
         });
-    </script>
-    <script>
+
         $(document).ready(function () {
             $('#active-table').DataTable();
         });
-    </script>
-    <script>
+
         $(document).ready(function () {
             $('#teams-table').DataTable();
         });
-    </script>
-    <script>
+
         $(function () {
             $('.checkbox-admin').change(function (e) {
-                $.get('/users/' + e.target.id + '/toggleAdmin', null, function (r) {
-                });
+                window.location.replace('/users/' + e.target.id + '/toggleAdmin');
             })
         });
-    </script>
-    <script>
+
         $(function () {
             $('.checkbox-active').change(function (e) {
-                $.get('/users/' + e.target.id + '/toggleActive', null, function (r) {
-                });
+                window.location.replace('/users/' + e.target.id + '/toggleActive');
             })
         });
-    </script>
-    <script>
-        $(function () {
-            $('.checkbox-active').change(function (e) {
-                $.get('/users/' + e.target.id + '/toggleActive', null, function (r) {
-                });
-            })
-        });
-    </script>
-    <script>
+
         function deleteTeam(id) {
-            $.get('/teams/' + id + '/delete', null, function (r) {
-                window.location.reload();
-            });
+            window.location.replace('/teams/' + id + '/delete');
         }
     </script>
 @stop

@@ -13,12 +13,14 @@ class UsersController extends Controller
 	public function index()
 	{
 		$users = User::all();
+
 		return view('users.index', compact('users'));
 	}
 
 	public function me()
 	{
 		$user = Auth::user();
+
 		return view('users.me', compact('user'));
 	}
 
@@ -28,9 +30,11 @@ class UsersController extends Controller
 		if ($user->admin == true) {
 			$users = User::all();
 			$teams = Team::all();
+
 			return view('admin.index', compact('user', 'users', 'teams'));
 		} else {
 			Session::flash('error', 'You are not authorized');
+
 			return redirect('');
 		}
 	}
@@ -38,6 +42,7 @@ class UsersController extends Controller
 	public function show($id)
 	{
 		$user = User::find($id);
+
 		return view('users.show', compact('user'));
 	}
 
@@ -46,6 +51,7 @@ class UsersController extends Controller
 		$user = Auth::user();
 		$user->team_id = null;
 		$user->save();
+
 		return view('users.me', compact('user'));
 	}
 
@@ -61,10 +67,11 @@ class UsersController extends Controller
 				$targetUser->admin = true;
 				$targetUser->save();
 			}
-			$users = User::all();
-			return view('admin.index', compact('user', 'users'));
+
+			return redirect('admin');
 		} else {
 			Session::flash('error', 'You are not authorized');
+
 			return redirect('');
 		}
 	}
@@ -81,10 +88,11 @@ class UsersController extends Controller
 				$targetUser->active = true;
 				$targetUser->save();
 			}
-			$users = User::all();
-			return view('admin.index', compact('user', 'users'));
+
+			return redirect('admin');
 		} else {
 			Session::flash('error', 'You are not authorized');
+
 			return redirect('');
 		}
 	}
