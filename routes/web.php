@@ -20,6 +20,7 @@ Route::get('/teams/{team}', 'TeamsController@show');
 
 Route::get('/scrims', 'ScrimsController@index');
 Route::get('/scrims/add', 'ScrimsController@addScrim');
+Route::get('/scrims/filter/{date}', 'ScrimsController@filter');
 Route::get('/scrims/{scrim}/remove', 'ScrimsController@removeScrim');
 Route::get('/scrims/{scrim}/choose/{comment}', 'ScrimsController@choose');
 Route::get('/scrims/{scrim}', 'ScrimsController@show');

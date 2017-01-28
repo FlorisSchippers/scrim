@@ -14,8 +14,33 @@ class scrimsController extends Controller
 	public function index()
 	{
 		$scrims = Scrim::all();
+		$scrimdates = [];
+		foreach ($scrims as $scrim) {
+			if (!in_array($scrim->date, $scrimdates)) {
+				$scrimdates[] = $scrim->date;
+			}
+		}
 
-		return view('scrims.index', compact('scrims'));
+		return view('scrims.index', compact('scrims', 'scrimdates'));
+	}
+
+	public function filter($date)
+	{
+		$allScrims = Scrim::all();
+		$scrimdates = [];
+		foreach ($allScrims as $scrim) {
+			if (!in_array($scrim->date, $scrimdates)) {
+				$scrimdates[] = $scrim->date;
+			}
+		}
+		$scrims = [];
+		foreach ($allScrims as $scrim) {
+			if ($scrim->date == $date) {
+				$scrims[] = $scrim;
+			}
+		}
+
+		return view('scrims.index', compact('scrims', 'scrimdates', 'date'));
 	}
 
 	public function show($id)
@@ -54,7 +79,7 @@ class scrimsController extends Controller
 	{
 		$this->validate($request, [
 				'date' => 'required|date|after:today',
-				'startTime' => 'required|after:now',
+				'startTime' => 'required',
 				'endTime' => 'required|after:startTime'
 		]);
 
