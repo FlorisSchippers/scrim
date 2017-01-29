@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <div class="col-md-8 col-md-offset-2">
+            @if(Session::has('teaminfo'))
+                <div class="alert alert-info">
+                    {{ Session::get('teaminfo') }}
+                </div>
+            @endif
             <h1>All teams</h1>
             <ul class="list-group">
                 @foreach($teams as $team)

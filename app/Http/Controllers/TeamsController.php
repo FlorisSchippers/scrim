@@ -6,12 +6,18 @@ use App\User;
 use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class TeamsController extends Controller
 {
 	public function index()
 	{
 		$teams = Team::all();
+
+		$user = Auth::user();
+		if (!$user->team_id) {
+			Session::flash('teaminfo', 'You can create a team on your profile page');
+		}
 
 		return view('teams.index', compact('teams'));
 	}
@@ -82,7 +88,7 @@ class TeamsController extends Controller
 		if ($user->admin == true) {
 			$users = User::all();
 			foreach ($users as $user) {
-				if ($user->team_id = $id) {
+				if ($user->team_id == $id) {
 					$user->team_id = NULL;
 					$user->save();
 				}

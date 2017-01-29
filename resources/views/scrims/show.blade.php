@@ -12,12 +12,9 @@
 
             <ul class="list-group">
                 <li class="list-group-item">On {{ $scrim->date }}</li>
-                <li class="list-group-item">From {{ $scrim->startTime }}</li>
-                <li class="list-group-item">To {{ $scrim->endTime }}</li>
+                <li class="list-group-item">From {{ $scrim->startTime }} until {{ $scrim->endTime }}</li>
             </ul>
-            <br>
             <hr>
-            <br>
             <ul class="list-group">
                 @foreach($scrim->comments as $comment)
                     <li class="list-group-item
@@ -57,9 +54,7 @@
                     <button type="submit" name="submit" class="btn btn-primary">Add comment</button>
                 </form>
             @endif
-            <br>
             <hr>
-            <br>
             <h3><a href="/scrims">Back to all scrims</a></h3>
             <h5><a href="/">Back to hub</a></h5>
         </div>

@@ -7723,7 +7723,8 @@ button.close {
 }
 
 #teamlist-image {
-  height: 100px;
+  width: 175px;
+  margin-right: 50px;
 }
 
 #teampage-image {

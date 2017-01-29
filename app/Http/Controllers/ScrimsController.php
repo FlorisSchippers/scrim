@@ -8,6 +8,7 @@ use App\Scrim;
 use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class scrimsController extends Controller
 {
@@ -19,6 +20,13 @@ class scrimsController extends Controller
 			if (!in_array($scrim->date, $scrimdates)) {
 				$scrimdates[] = $scrim->date;
 			}
+		}
+
+		$user = Auth::user();
+		if (!$user->team_id) {
+			Session::flash('scriminfo', 'You need a team in order to create scrims');
+		} else {
+			Session::flash('scriminfo', 'You can create scrims on your team-page');
 		}
 
 		return view('scrims.index', compact('scrims', 'scrimdates'));

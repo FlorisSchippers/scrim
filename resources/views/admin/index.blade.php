@@ -9,33 +9,12 @@
     <div class="container">
         <div class="col-md-10 col-md-offset-1">
             <table id="admin-table" class="display">
-                <caption>Admin Overview</caption>
+                <caption>User Overview</caption>
                 <thead>
                 <tr>
                     <th>User</th>
                     <th>Email</th>
                     <th>Admin</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($users as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td><input id="{{ $user->id }}" class="checkbox-admin" type="checkbox"
-                                   @if($user->admin == true) checked
-                                   @endif data-toggle="toggle"></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-            <hr>
-            <table id="active-table" class="display">
-                <caption>Active Overview</caption>
-                <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Email</th>
                     <th>Active</th>
                 </tr>
                 </thead>
@@ -44,9 +23,14 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td><input id="{{ $user->id }}" class="checkbox-active" type="checkbox"
-                                   @if($user->active == true) checked
-                                   @endif data-toggle="toggle"></td>
+                        <td>
+                            <input id="{{ $user->id }}" class="checkbox-admin" type="checkbox"
+                                   @if($user->admin == true) checked @endif data-toggle="toggle">
+                        </td>
+                        <td>
+                            <input id="{{ $user->id }}" class="checkbox-active" type="checkbox"
+                                   @if($user->active == true) checked @endif data-toggle="toggle">
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

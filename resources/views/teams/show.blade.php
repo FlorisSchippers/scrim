@@ -39,14 +39,14 @@
             <div class="col-md-3 no-padding">
                 <ul class="list-group">
                     @foreach($team->scrims as $scrim)
-                        <li class="list-group-item">{{ $scrim->date }}</li>
+                        <li class="list-group-item @if ($scrim->opponent_id) list-group-item-success @else list-group-item-danger @endif">{{ $scrim->date }}</li>
                     @endforeach
                 </ul>
             </div>
             <div class="col-md-9 no-padding">
                 <ul class="list-group">
                     @foreach($team->scrims as $scrim)
-                        <li class="list-group-item">
+                        <li class="list-group-item @if ($scrim->opponent_id) list-group-item-success @else list-group-item-danger @endif">
                             <a href="/scrims/{{ $scrim->id }}">
                                 From {{ $scrim->startTime }} until {{ $scrim->endTime }}
                             </a>
