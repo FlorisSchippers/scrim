@@ -8,7 +8,7 @@
                 @foreach($teams as $team)
                     <li class="list-group-item">
                         <a href="/teams/{{ $team->id }}">
-                            <img src="{{ $team->image }}" style="height: 100px; margin-top: -10px">{{ $team->name }}
+                            <img id="teamlist-image" src="{{ $team->image }}">{{ $team->name }}
                         </a>
                     </li>
                 @endforeach

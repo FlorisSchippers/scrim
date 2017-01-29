@@ -24,9 +24,9 @@
                         @if($comment->chosen == true)
                                 list-group-item-success
                         @endif
-                            "><span style="font-weight: bold">
+                            "><span id="player-name">
                             <a href="/users/{{ $comment->user->id }}">{{ $comment->user->team->abbreviation }}.{{ $comment->user->nickname }}</a></span>:
-                            <span style="color: black">{{ $comment->body }}</span>
+                            <span id="comment-body">{{ $comment->body }}</span>
                         @if ($user->team_id == $comment->scrim->team_id)
                             @if($comment->chosen == true)
                                 <a href="/scrims/{{ $scrim->id }}/choose/{{ $comment->id }}" class="pull-right">

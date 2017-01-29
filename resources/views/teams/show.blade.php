@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
-            <img src="{{ $team->image }}" style="width: 200px; margin: auto; float:right">
+            <img src="{{ $team->image }}" id="teampage-image">
             <h1>{{ $team->name }}</h1>
             @if($team->rating)
                 <h3>Avg. Rating: {{ $team->rating }}MMR</h3>
@@ -11,12 +11,12 @@
             @endif
             @if($team->bio)
                 {{ $team->bio }}
+                <hr>
             @endif
-            <hr>
             <h2>
                 Players
                 @if ($user->team_id != $team->id)
-                    <a href="/teams/{{ $team->id }}/join" class="pull-right" style="margin-right: 14px"><h4><span
+                    <a href="/teams/{{ $team->id }}/join" class="pull-right" id="team-icons"><h4><span
                                     class="glyphicon glyphicon-plus-sign"
                                     aria-hidden="true"></span></h4></a>
                 @endif
@@ -32,18 +32,18 @@
             <h2>
                 Scrims
                 @if ($user->team_id == $team->id)
-                    <a href="/scrims/add" class="pull-right" style="margin-right: 14px"><h4><span
+                    <a href="/scrims/add" class="pull-right" id="team-icons"><h4><span
                                     class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></h4></a>
                 @endif
             </h2>
-            <div class="col-md-3" style="padding: 0">
+            <div class="col-md-3 no-padding">
                 <ul class="list-group">
                     @foreach($team->scrims as $scrim)
                         <li class="list-group-item">{{ $scrim->date }}</li>
                     @endforeach
                 </ul>
             </div>
-            <div class="col-md-9" style="padding: 0">
+            <div class="col-md-9 no-padding">
                 <ul class="list-group">
                     @foreach($team->scrims as $scrim)
                         <li class="list-group-item">

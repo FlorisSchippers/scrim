@@ -13,7 +13,7 @@
     <!-- Styles -->
     @yield('header')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 
     <!-- Scripts -->
     <script>
@@ -55,7 +55,7 @@
                                 <li>
                                     <a href="{{ url('/users/me') }}">Profile</a>
                                     @if(Auth::user()->admin == true)
-                                    <a href="{{ url('/admin') }}">Admin</a>
+                                        <a href="{{ url('/admin') }}">Admin</a>
                                     @endif
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
@@ -63,8 +63,7 @@
                                         Logout
                                     </a>
 
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                                          style="display: none;">
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST">
                                         {{ csrf_field() }}
                                     </form>
                                 </li>

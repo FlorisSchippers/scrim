@@ -1,3 +1,47 @@
+#logout-form {
+  display: none;
+}
+
+#title {
+  margin-bottom: 50px;
+}
+
+#hub-icon {
+  text-decoration: none;
+}
+
+#hub-icon .glyphicon {
+  display: block;
+  text-align: center;
+  font-size: 200px;
+}
+
+.select {
+  margin-bottom: 10px;
+}
+
 .no-padding {
   padding: 0;
+}
+
+#player-name {
+  font-weight: bold;
+}
+
+#comment-body {
+  color: black;
+}
+
+#teamlist-image {
+  height: 100px;
+}
+
+#teampage-image {
+  width: 200px;
+  margin: auto;
+  float: right;
+}
+
+#team-icons {
+  margin-right: 15px;
 }
